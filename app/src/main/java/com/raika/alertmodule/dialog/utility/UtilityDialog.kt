@@ -12,8 +12,6 @@ class UtilityDialog(context: Context, private val layout: Int) : Alert(context) 
     
     fun setListener(listener: (ADModel) -> Unit) {
         this.listener = listener
-
-
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {
