@@ -1,2 +1,2 @@
-include ':app'
+include ':alert_module'
 rootProject.name = "AlertModule"
