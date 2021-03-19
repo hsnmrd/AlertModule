@@ -18,6 +18,7 @@ open class ModuleProgress(
     onViewCreate: ((View) -> Unit)? = null,
 ) {
 
+    var progressContext = context
     private var progress: Progress? = null
     private var clickListener: ((context: Context) -> MutableLiveData<Boolean>)? = null
 
@@ -39,6 +40,10 @@ open class ModuleProgress(
         progress?.setCancelable(cancelable)
 //        progress?.setOnCancelListener { onTaskCancelListener(this) }
         progress?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+
+    fun clickListener(clickListener: ((context: Context) -> MutableLiveData<Boolean>)?) {
+        this.clickListener = clickListener
     }
 
     fun hide() {
