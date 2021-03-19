@@ -18,6 +18,8 @@ open class ModuleAlert (var context: Context, layout: Int) {
 
     init {
         adUtilityDialog.setCancelable(false)
+        val window = adUtilityDialog.window
+        window?.setDimAmount(0.5f)
     }
 
     /**

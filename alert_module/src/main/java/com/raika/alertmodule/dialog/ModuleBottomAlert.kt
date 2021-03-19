@@ -27,6 +27,7 @@ open class ModuleBottomAlert(var context: Context, layout: Int) {
         adUtilityDialog.setCancelable(false)
         val window = adUtilityDialog.window
         val lp = window?.attributes
+        window?.setDimAmount(0.5f)
         window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         lp?.width = ViewGroup.LayoutParams.MATCH_PARENT
         lp?.gravity = Gravity.BOTTOM
