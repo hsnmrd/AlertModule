@@ -14,7 +14,6 @@ class Progress(
     private val cancelable: Boolean,
     private val moduleProgress: ModuleProgress,
     private var layout: Int,
-    private val onTaskCancelListener: (ModuleProgress) -> Unit,
     private var onViewCreate: ((view: View) -> Unit)? = null,
 ) : AlertDialog(context, R.style.DialogTheme) {
 
@@ -35,7 +34,6 @@ class Progress(
         window?.decorView?.rootView?.let { onViewCreate?.invoke(it) }
         window?.decorView?.rootView?.setOnClickListener {
             if (cancelable) {
-                onTaskCancelListener(moduleProgress)
                 moduleProgress.hide()
             }
         }

@@ -26,7 +26,7 @@ class UtilityFullScreen(context: Context, private val layout: Int, style: Int) :
         window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window?.statusBarColor = ResAttribute(context, R.attr.white).getColor()
+            window?.statusBarColor = ResAttribute(context, R.attr.alert_module_white).getColor()
         }
         view?.let {
             setContentView(it)

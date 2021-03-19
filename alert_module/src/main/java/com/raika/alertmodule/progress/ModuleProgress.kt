@@ -29,16 +29,15 @@ open class ModuleProgress(
             cancelable = cancelable,
             moduleProgress = this,
             onViewCreate = onViewCreate,
-            onTaskCancelListener = {
-                clickListener?.let {
-                    it(context).observe(context as LifecycleOwner) { isLoading ->
-                        if (isLoading) show() else if (cancelable) hide()
-                    }
-                }
-            },
         )
         progress?.setCancelable(cancelable)
-//        progress?.setOnCancelListener { onTaskCancelListener(this) }
+        progress?.setOnCancelListener {
+            clickListener?.let {
+                it(context).observe(context as LifecycleOwner) { isLoading ->
+                    if (isLoading) show() else if (cancelable) hide()
+                }
+            }
+        }
         progress?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
