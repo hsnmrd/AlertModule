@@ -15,6 +15,7 @@ open class ModuleProgress(
     var context: Context,
     var layout: Int,
     var cancelable: Boolean = true,
+    var dimAmount: Float = 0f,
     onViewCreate: ((View) -> Unit)? = null,
 ) {
 
@@ -28,6 +29,7 @@ open class ModuleProgress(
             layout = layout,
             cancelable = cancelable,
             moduleProgress = this,
+            dimAmount = dimAmount,
             onViewCreate = onViewCreate,
         )
         progress?.setCancelable(cancelable)

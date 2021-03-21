@@ -14,12 +14,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.raika.alertmodule.dialog.model.ADModel
 import com.raika.alertmodule.dialog.utility.UtilityDialog
 
-/**
- * **ADTaskBottom** a class to show a dialog box in bottom of screen
- * @param context: pass context
- * @param layout: pass a layout to show in dialog box
- */
-open class ModuleBottomAlert(var context: Context, layout: Int, dimValue: Float = 0.5f) {
+open class ModuleBottomAlert(var context: Context, layout: Int, dimAmount: Float = 0.5f) {
 
     private val adUtilityDialog: UtilityDialog = UtilityDialog(context, layout)
 
@@ -27,7 +22,7 @@ open class ModuleBottomAlert(var context: Context, layout: Int, dimValue: Float 
         adUtilityDialog.setCancelable(false)
         val window = adUtilityDialog.window
         val lp = window?.attributes
-        window?.setDimAmount(dimValue)
+        window?.setDimAmount(dimAmount)
         window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         lp?.width = ViewGroup.LayoutParams.MATCH_PARENT
         lp?.gravity = Gravity.BOTTOM

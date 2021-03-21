@@ -12,14 +12,14 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.raika.alertmodule.dialog.model.ADModel
 import com.raika.alertmodule.dialog.utility.UtilityDialog
 
-open class ModuleAlert (var context: Context, layout: Int, dimValue: Float = 0.5f) {
+open class ModuleAlert (var context: Context, layout: Int, dimAmount: Float = 0.5f) {
 
     private val adUtilityDialog: UtilityDialog = UtilityDialog(context, layout)
 
     init {
         adUtilityDialog.setCancelable(false)
         val window = adUtilityDialog.window
-        window?.setDimAmount(dimValue)
+        window?.setDimAmount(dimAmount)
     }
 
     /**

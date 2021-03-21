@@ -14,6 +14,7 @@ class Progress(
     private val cancelable: Boolean,
     private val moduleProgress: ModuleProgress,
     private var layout: Int,
+    var dimAmount: Float,
     private var onViewCreate: ((view: View) -> Unit)? = null,
 ) : AlertDialog(context, R.style.DialogTheme) {
 
@@ -23,7 +24,7 @@ class Progress(
         val layoutParams = window?.attributes
         window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         layoutParams?.width = ViewGroup.LayoutParams.MATCH_PARENT
-        layoutParams?.dimAmount = 0f
+        layoutParams?.dimAmount = dimAmount
         window?.attributes = layoutParams
     }
 
