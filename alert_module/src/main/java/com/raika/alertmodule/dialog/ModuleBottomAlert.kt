@@ -19,7 +19,7 @@ import com.raika.alertmodule.dialog.utility.UtilityDialog
  * @param context: pass context
  * @param layout: pass a layout to show in dialog box
  */
-open class ModuleBottomAlert(var context: Context, layout: Int) {
+open class ModuleBottomAlert(var context: Context, layout: Int, dimValue: Float = 0.5f) {
 
     private val adUtilityDialog: UtilityDialog = UtilityDialog(context, layout)
 
@@ -27,11 +27,10 @@ open class ModuleBottomAlert(var context: Context, layout: Int) {
         adUtilityDialog.setCancelable(false)
         val window = adUtilityDialog.window
         val lp = window?.attributes
-        window?.setDimAmount(0.5f)
+        window?.setDimAmount(dimValue)
         window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         lp?.width = ViewGroup.LayoutParams.MATCH_PARENT
         lp?.gravity = Gravity.BOTTOM
-        lp?.dimAmount = 1f
         
         window?.attributes = lp
     }
