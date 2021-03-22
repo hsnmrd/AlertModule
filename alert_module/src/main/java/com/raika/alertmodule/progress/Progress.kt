@@ -1,5 +1,6 @@
 package com.raika.alertmodule.progress
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
@@ -10,13 +11,13 @@ import androidx.lifecycle.MutableLiveData
 import com.raika.alertmodule.R
 
 class Progress(
-    context: Context?,
+    activity: Activity?,
     private val cancelable: Boolean,
     private val moduleProgress: ModuleProgress,
     private var layout: Int,
     var dimAmount: Float,
     private var onViewCreate: ((view: View) -> Unit)? = null,
-) : AlertDialog(context, R.style.DialogTheme) {
+) : AlertDialog(activity, R.style.DialogTheme) {
 
     init {
         this.setCancelable(false)

@@ -1,5 +1,6 @@
 package com.raika.alertmodule.progress
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -12,20 +13,20 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 
 open class ModuleProgress(
-    var context: Context,
+    var activity: Activity,
     var layout: Int,
     var cancelable: Boolean = true,
     var dimAmount: Float = 0f,
     onViewCreate: ((View) -> Unit)? = null,
 ) {
 
-    var progressContext = context
+    var progressContext = activity
     private var progress: Progress? = null
     private var clickListener: ((context: Context) -> MutableLiveData<Boolean>)? = null
 
     init {
         progress = Progress(
-            context = context,
+            activity = activity,
             layout = layout,
             cancelable = cancelable,
             moduleProgress = this,
@@ -35,7 +36,7 @@ open class ModuleProgress(
         progress?.setCancelable(cancelable)
         progress?.setOnCancelListener {
             clickListener?.let {
-                it(context).observe(context as LifecycleOwner) { isLoading ->
+                it(activity).observe(activity as LifecycleOwner) { isLoading ->
                     if (isLoading) show() else if (cancelable) hide()
                 }
             }
@@ -52,7 +53,7 @@ open class ModuleProgress(
     }
 
     fun show() {
-        (context as LifecycleOwner).lifecycle.addObserver(object : LifecycleObserver {
+        (activity as LifecycleOwner).lifecycle.addObserver(object : LifecycleObserver {
             @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
             fun showDialog() {
                 if (progress?.isShowing == false) {
