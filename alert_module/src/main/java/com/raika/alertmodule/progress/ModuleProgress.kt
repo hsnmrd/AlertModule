@@ -20,7 +20,7 @@ open class ModuleProgress(
     onViewCreate: ((View) -> Unit)? = null,
 ) {
 
-    var progressContext = activity
+    var progressActivity = activity
     private var progress: Progress? = null
     private var clickListener: ((context: Context) -> MutableLiveData<Boolean>)? = null
 
